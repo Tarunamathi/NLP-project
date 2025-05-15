@@ -1,0 +1,16 @@
+import readline
+
+# Sample word list for auto-completion
+words = ['print', 'input', 'import', 'def', 'class', 'for', 'while', 'if', 'else', 'elif']
+
+def completer(text, state):
+    matches = [w for w in words if w.startswith(text)]
+    return matches[state] if state < len(matches) else None
+
+readline.set_completer(completer)
+readline.parse_and_bind("tab: complete")
+
+while True:
+    line = input("Code > ")
+    if line.strip() == "exit":
+        break
