@@ -1,0 +1,11 @@
+from transformers import pipeline
+
+# Load text generation model
+generator = pipeline("text-generation", model="gpt2")
+
+# Input prompt for content creation
+prompt = "Artificial Intelligence in healthcare is"
+results = generator(prompt, max_length=50, num_return_sequences=1)
+
+print("Generated Content:")
+print(results[0]['generated_text'])
